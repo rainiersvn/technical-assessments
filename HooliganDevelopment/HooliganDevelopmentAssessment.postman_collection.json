@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "0349a683-b350-4ec2-94e0-df8c0ba77e0b",
+		"name": "HooliganDevelopmentAssessment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22038283"
+	},
+	"item": [
+		{
+			"name": "Local",
+			"item": [
+				{
+					"name": "about",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:8080/about",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"about"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkUserStreams",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"\",\n    \"streamId\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/checkUserStreams",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"checkUserStreams"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Remote (AWS > ECS > EC2)",
+			"item": [
+				{
+					"name": "about",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://35.173.246.62:8080/about",
+							"protocol": "http",
+							"host": [
+								"35",
+								"173",
+								"246",
+								"62"
+							],
+							"port": "8080",
+							"path": [
+								"about"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkUserStreams",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"\",\n    \"streamId\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://35.173.246.62:8080/checkUserStreams",
+							"protocol": "http",
+							"host": [
+								"35",
+								"173",
+								"246",
+								"62"
+							],
+							"port": "8080",
+							"path": [
+								"checkUserStreams"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Remote (API Gateway)",
+			"item": [
+				{
+					"name": "about",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://ved4ydlli4.execute-api.us-east-1.amazonaws.com/live/about",
+							"protocol": "https",
+							"host": [
+								"ved4ydlli4",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"live",
+								"about"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkUserStreams",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "8opoa2q11i",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"\",\n    \"streamId\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ved4ydlli4.execute-api.us-east-1.amazonaws.com/live/checkUserStreams",
+							"protocol": "https",
+							"host": [
+								"ved4ydlli4",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"live",
+								"checkUserStreams"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API Gateway Custom Domain",
+			"item": [
+				{
+					"name": "about",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.korbanministries.co.za/about",
+							"protocol": "https",
+							"host": [
+								"api",
+								"korbanministries",
+								"co",
+								"za"
+							],
+							"path": [
+								"about"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkUserStreams",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "8opoa2q11i",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"\",\n    \"streamId\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.korbanministries.co.za/checkUserStreams",
+							"protocol": "https",
+							"host": [
+								"api",
+								"korbanministries",
+								"co",
+								"za"
+							],
+							"path": [
+								"checkUserStreams"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

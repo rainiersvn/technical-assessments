@@ -1,0 +1,7 @@
+node_modules/
+src/
+README.md
+.git
+.dockerignore
+tsconfig.json
+HooliganDevelopmentAssessment.postman_collection.json

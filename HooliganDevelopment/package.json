@@ -1,0 +1,46 @@
+{
+  "name": "video-stream-checker",
+  "version": "1.0.0",
+  "description": "This API checks how many streams a active user has.",
+  "main": "dist/server.js",
+  "engines": {
+    "node": ">=14.16.0"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "test": "jest --config test/jest-config.json",
+    "test:watch": "npm run test -- --watch",
+    "start": "node dist/server.js",
+    "dev": "nodemon dist/server.js",
+    "build": "npm run clean && tsc",
+    "docker-build": "npm run build && docker build --no-cache . -t \"$npm_package_name\"",
+    "run-docker-image": "docker run -p 8080:8080 -d \"$npm_package_name\"",
+    "docker-prune": "docker container prune -f && docker image prune -f --all"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rainiersvn/hooliganAssesment.git"
+  },
+  "author": "Rainier van Niekerk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rainiersvn/hooliganAssessment/issues"
+  },
+  "homepage": "https://github.com/rainiersvn/hooliganAssessment#readme",
+  "dependencies": {
+    "body-parser": "1.20.0",
+    "express": "4.18.1",
+    "rimraf": "3.0.2",
+    "tslib": "2.4.0",
+    "typescript": "4.7.4",
+    "uuid": "8.3.2"
+  },
+  "devDependencies": {
+    "@types/jest": "28.1.6",
+    "@types/node": "14.0.1",
+    "jest": "28.1.3",
+    "jest-cli": "28.1.3",
+    "nodemon": "2.0.19",
+    "ts-jest": "28.0.7"
+  }
+}
