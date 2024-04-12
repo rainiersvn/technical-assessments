@@ -33,5 +33,5 @@ jobs:
       run: |
         ls -lah
         cd ${{ inputs.project_path }}
-        docker build . --file Dockerfile --tag "${{inputs.project_path}}:${{github.ref_name}}"
+        docker build . --file Dockerfile --tag "$(echo 'console.log("${{ inputs.project_path }}".toLowerCase())' | node -):${{ github.ref_name }}"
 
