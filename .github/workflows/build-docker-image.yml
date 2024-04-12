@@ -25,5 +25,5 @@ jobs:
       run: cd ${{ inputs.project_path }}
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${{ github.event.inputs.project_path }}:${{ github.ref_name }}
+      run: docker build . --file Dockerfile --tag "${{inputs.project_path}}:${{github.ref_name}}"
 
