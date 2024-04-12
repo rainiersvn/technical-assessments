@@ -1,0 +1,30 @@
+name: Build Docker Image
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      project-path:
+        required: true
+        type: string
+        default: "HooliganDevelopment"
+
+concurrency: 
+  group: technical-assesment-builds
+  
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Change Directory to project-path
+      run: cd ${{ inputs.project-path }}
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag ${{ inputs.project-path }}:$(date +%s)
