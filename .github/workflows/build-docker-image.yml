@@ -13,23 +13,13 @@ on:
         options:
         - "HooliganDevelopment"
         - "SingularSystems"
-  workflow_call:
-    inputs:
-      project_path:
-        description: 'The project the workflow should build'
-        required: true
-        type: string
-        default: "HooliganDevelopment"
 
 concurrency: 
   group: technical-assesment-builds
   
 jobs:
-
-  build:
-
+  build-docker-image:
     runs-on: ubuntu-latest
-
     steps:
     - name: Change Directory to project path
       run: cd ${{ inputs.project_path }}
