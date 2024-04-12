@@ -26,6 +26,7 @@ jobs:
     steps:
     - name: Change Directory to project-path
       run: cd ${{ inputs.project-path }}
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag "${{ inputs.project_path }}:$(date %s)"
+      run: docker build . --file Dockerfile --tag gitflow-test-gui:${{ github.ref_name }}
+
