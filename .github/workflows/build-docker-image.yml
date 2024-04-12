@@ -22,7 +22,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Change Directory to project path
-      run: cd ${{ inputs.project_path }}
+      run: |
+        ls -lah
+        cd ${{ inputs.project_path }}
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag "${{inputs.project_path}}:${{github.ref_name}}"
