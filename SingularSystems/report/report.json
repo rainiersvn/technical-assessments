@@ -1,0 +1,26 @@
+[
+  {
+    "Month": "2022-07",
+    "InfoLogCount": 34,
+    "WarningLogCount": 6,
+    "ErrorLogCount": 10,
+    "WarningLogCountChange": null,
+    "ErrorLogCountChange": null
+  },
+  {
+    "Month": "2022-08",
+    "InfoLogCount": 32,
+    "WarningLogCount": 9,
+    "ErrorLogCount": 4,
+    "WarningLogCountChange": "50%",
+    "ErrorLogCountChange": "-60%"
+  },
+  {
+    "Month": "2022-09",
+    "InfoLogCount": 25,
+    "WarningLogCount": 8,
+    "ErrorLogCount": 5,
+    "WarningLogCountChange": "-11,11%",
+    "ErrorLogCountChange": "25%"
+  }
+]

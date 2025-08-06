@@ -142,7 +142,7 @@ class LogReporter {
                     ErrorLogCountChange = $ErrorChange
                     # The below code will change the double values to strings and add a `%`, I left it commented to keep the code simpler.
                     # WarningLogCountChange = if ($warningChange) { $warningChange.ToString() + "%" } else { $null }
-                    # ErrorLogCountChange = if ($errorChange) { $errorChange.ToString() + "%" } else { $null } 
+                    # ErrorLogCountChange   = if ($errorChange) { $errorChange.ToString() + "%" } else { $null } 
                 }
             
                 $PreviousWarnings = $CurrentWarnings
@@ -171,16 +171,16 @@ class LogReporter {
         Write-Host "  Converting the json report to an html report"
         try {
             # Read and parse the JSON data
-            $JsonDataPath = $this.LocalReportDir+"/report.json"
+            $JsonDataPath = $this.LocalReportDir + "/report.json"
             $JsonData = Get-Content -Path $JsonDataPath | ConvertFrom-Json
             
             # Generate the HTML table
             $HtmlTable = "<table><style>table,th,td {border: 1px solid black; padding:15px}</style><thead><tr><th>Month</th><th>InfoLogs</th><th>WarningLogs</th><th>ErrorLogs</th><th>% Increase/Decrease of Warnings</th><th>% Increase/Decrease of Errors</th></tr></thead><tbody>"
-            foreach ($MonthlyData in $JsonData.GetEnumerator() | Sort-Object -Property @{Expression={$_.Key};Ascending=$true}) {
+            foreach ($MonthlyData in $JsonData.GetEnumerator() | Sort-Object -Property @{Expression = { $_.Key }; Ascending = $true }) {
                 $HtmlTable += "<tr><td>$($MonthlyData.Month)</td><td>$($MonthlyData.InfoLogCount)</td><td>$($MonthlyData.WarningLogCount)</td><td>$($MonthlyData.ErrorLogCount)</td><td>$($MonthlyData.WarningLogCountChange)</td><td>$($MonthlyData.ErrorLogCountChange)</td></tr>"
             }
             $HtmlTable += "</tbody></table>"
-            $HtmlLocalReportDir = $this.LocalReportDir+"/report.html"
+            $HtmlLocalReportDir = $this.LocalReportDir + "/report.html"
             # Write the HTML file
             Set-Content -Path $HtmlLocalReportDir -Value $HtmlTable
         } catch {
@@ -201,9 +201,9 @@ class LogReporter {
 
 }
 [LogReporter]::new("index.txt", "./logs", "./report").AggregateLogData()
-$LogReporter = [LogReporter]::new("index.txt", "./logs", "./report")
-$LogReporter.DownloadLogFiles()
-$LogReporter.ParseLogFiles()
-$LogReporter.GenerateJsonReport()
-$LogReporter.GenerateHtmlReport()
-$LogReporter.AggregateLogData()
+# $LogReporter = [LogReporter]::new("index.txt", "./logs", "./report")
+# $LogReporter.DownloadLogFiles()
+# $LogReporter.ParseLogFiles()
+# $LogReporter.GenerateJsonReport()
+# $LogReporter.GenerateHtmlReport()
+# $LogReporter.AggregateLogData()
