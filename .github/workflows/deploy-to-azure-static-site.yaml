@@ -1,0 +1,33 @@
+name: Deploy Reports to Azure Static Website
+
+on:
+  push:
+    branches:
+      - silenced-workflows
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Checkout your repo so we can see the report/ folder
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Login to Azure with a Service Principal JSON in the AZURE_CREDENTIALS secret
+      - name: "Login via Azure CLI"
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # 3. Install Azure CLI extension for static websites (optional–CLI has blob commands by default)
+      - name: Ensure Azure Storage extension is installed
+        run: az extension add --name storage-preview || echo "extension already installed"
+
+      # 4. Upload the entire report/ folder to $web container
+      - name: Upload report to $web
+        run: |
+          az storage blob upload-batch \
+            --account-name ${{ secrets.STORAGE_ACCOUNT_NAME }} \
+            --destination '$web' \
+            --source report \
+            --overwrite

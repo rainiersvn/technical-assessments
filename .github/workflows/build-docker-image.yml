@@ -2,36 +2,38 @@ name: Build Docker Image
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - "silenced-workflows"
+
   workflow_dispatch:
     inputs:
       project_path:
-        description: 'The project the workflow should build'
+        description: "The project the workflow should build"
         required: true
         type: choice
         default: "HooliganDevelopment"
         options:
-        - "HooliganDevelopment"
-        - "SingularSystems"
+          - "HooliganDevelopment"
+          - "SingularSystems"
+
   workflow_call:
     inputs:
       project_path:
-        description: 'The project the workflow should build'
+        description: "The project the workflow should build"
         required: true
         type: string
         default: "HooliganDevelopment"
-        
-concurrency: 
+
+concurrency:
   group: technical-assesment-builds
-  
+
 jobs:
   build-docker-image:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: |
-        ls -lah
-        cd ${{ inputs.project_path }}
-        docker build . --file Dockerfile --tag "$(echo 'console.log("${{ inputs.project_path }}".toLowerCase())' | node -):${{ github.ref_name }}"
-
+      - uses: actions/checkout@v4
+      - name: Build the Docker image
+        run: |
+          ls -lah
+          cd ${{ inputs.project_path }}
+          docker build . --file Dockerfile --tag "$(echo 'console.log("${{ inputs.project_path }}".toLowerCase())' | node -):${{ github.ref_name }}"
