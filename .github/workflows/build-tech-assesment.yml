@@ -30,6 +30,8 @@ concurrency:
 jobs:
   build-docker-image:
     runs-on: ubuntu-latest
+    env:
+      PROJECT_PATH: ${{ inputs.project_path || 'SingularSystems' }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up Docker Buildx
@@ -39,18 +41,14 @@ jobs:
         uses: actions/cache@v4
         with:
           path: /tmp/.buildx-cache
-          key: buildx-${{ runner.os }}-${{ inputs.project_path }}-${{ github.sha }}
+          key: buildx-${{ runner.os }}-${{ env.PROJECT_PATH }}-${{ github.sha }}
           restore-keys: |
-            buildx-${{ runner.os }}-${{ inputs.project_path }}-
+            buildx-${{ runner.os }}-${{ env.PROJECT_PATH }}-
 
       - name: Build the Docker image
         run: |
-          if [ -z "${{ inputs.project_path }}" ]; then
-            echo "Error: project_path input is missing or empty."
-            exit 1
-          fi
-          cd ${{ inputs.project_path }}
-          TAG=$(echo "${{ inputs.project_path }}" | tr '[:upper:]' '[:lower:]')
+          cd "$PROJECT_PATH"
+          TAG=$(echo "$PROJECT_PATH" | tr '[:upper:]' '[:lower:]')
           if [ -z "$TAG" ]; then
             TAG="default"
           fi
