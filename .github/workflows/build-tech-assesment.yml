@@ -45,9 +45,17 @@ jobs:
 
       - name: Build the Docker image
         run: |
+          if [ -z "${{ inputs.project_path }}" ]; then
+            echo "Error: project_path input is missing or empty."
+            exit 1
+          fi
           cd ${{ inputs.project_path }}
+          TAG=$(echo "${{ inputs.project_path }}" | tr '[:upper:]' '[:lower:]')
+          if [ -z "$TAG" ]; then
+            TAG="default"
+          fi
           docker buildx build . \
             --file Dockerfile \
-            --tag "$(echo 'console.log("${{ inputs.project_path }}".toLowerCase())' | node -):${{ github.ref_name }}" \
+            --tag "$TAG:${{ github.ref_name }}" \
             --cache-from type=local,src=/tmp/.buildx-cache \
             --cache-to type=local,dest=/tmp/.buildx-cache
