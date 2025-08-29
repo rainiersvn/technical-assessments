@@ -3,7 +3,7 @@ name: Build Docker Image
 on:
   push:
     branches:
-      - "silenced-workflows"
+      - "main"
 
   workflow_dispatch:
     inputs:
@@ -11,7 +11,7 @@ on:
         description: "The project the workflow should build"
         required: true
         type: choice
-        default: "HooliganDevelopment"
+        default: "SingularSystems"
         options:
           - "HooliganDevelopment"
           - "SingularSystems"
@@ -22,10 +22,10 @@ on:
         description: "The project the workflow should build"
         required: true
         type: string
-        default: "HooliganDevelopment"
+        default: "SingularSystems"
 
 concurrency:
-  group: technical-assesment-builds
+  group: technical-assessment-builds
 
 jobs:
   build-docker-image:
