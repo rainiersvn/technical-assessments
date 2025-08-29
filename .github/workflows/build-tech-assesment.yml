@@ -32,8 +32,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Cache Docker layers
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: buildx-${{ runner.os }}-${{ inputs.project_path }}-${{ github.sha }}
+          restore-keys: |
+            buildx-${{ runner.os }}-${{ inputs.project_path }}-
+
       - name: Build the Docker image
         run: |
-          ls -lah
           cd ${{ inputs.project_path }}
-          docker build . --file Dockerfile --tag "$(echo 'console.log("${{ inputs.project_path }}".toLowerCase())' | node -):${{ github.ref_name }}"
+          docker buildx build . \
+            --file Dockerfile \
+            --tag "$(echo 'console.log("${{ inputs.project_path }}".toLowerCase())' | node -):${{ github.ref_name }}" \
+            --cache-from type=local,src=/tmp/.buildx-cache \
+            --cache-to type=local,dest=/tmp/.buildx-cache
