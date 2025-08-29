@@ -1,68 +1,87 @@
-# Singular Systems - Static Site & DevOps Challenge
+# DevOps Code Challenge Objectives
 
-## Table of Contents
+- [DevOps Code Challenge Objectives](#devops-code-challenge-objectives)
+  - [Challenge Context](#challenge-context)
+  - [Deliverables](#deliverables)
+  - [1. Required: Log Report Static Assets](#1-required-log-report-static-assets)
+  - [2. Required: Terraform Infrastructure as Code (IaC)](#2-required-terraform-infrastructure-as-code-iac)
+  - [3. Required: Containerisation of the Application](#3-required-containerisation-of-the-application)
+  - [4. Optional: CI/CD Challenge Using GitHub Actions](#4-optional-cicd-challenge-using-github-actions)
+  - [5. Optional: Generation of Site Favicon Using AI](#5-optional-generation-of-site-favicon-using-ai)
+  - [6. Required/Optional: Documentation](#6-requiredoptional-documentation)
 
-- [Singular Systems - Static Site \& DevOps Challenge](#singular-systems---static-site--devops-challenge)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-  - [Contents](#contents)
-  - [How to Run Locally](#how-to-run-locally)
-  - [Infrastructure as Code](#infrastructure-as-code)
-  - [Additional Scripts](#additional-scripts)
-  - [Notes](#notes)
+## Challenge Context
 
-## Overview
+- This assessment tests your ability to research and develop DevOps solutions for cloud infrastructure and application deployment.
+- You are provided with a Challenge Scenario to complete.
+- The challenge is based on the requirements outlined in the provided `PDF` and this `Objectives` document.
 
-This repository contains the solution for the Singular Systems DevOps Code Challenge. The main deliverables are:
+> PLEASE NOTE: Only the main (1) `PDF Scenario`, (2) the `Terraform` IaC, (3) the `Dockerfile` and (4) the `README` are required for submission. All of the other objectives/sub-objectives are optional and when done will enhance your submission dramatically.
+>
+> These four criteria when done will allow us to evaluate the following skill-sets:
+>
+> - 1 - Your ability to follow and implement a given spec/scenario/requirement.
+> - 2 - Your understanding of Infrastructure as Code (IaC) principles and practices.
+> - 3 - Your ability to containerize applications and manage their lifecycle.
+> - 4 - Your ability to write technical documentation and guides.
+>
+> CAVEAT: The use of AI is NOT prohibited, provided that you understand the implications and effects of the code it generates.
 
-- A static HTML report site (`report/report.html`)
-- A Dockerfile to host the static site using nginx
-- PowerShell scripts for site management
-- Terraform files for infrastructure as code
+## Deliverables
 
-## Contents
-
-- `report/` - Contains the static HTML report (`report.html`) and supporting files
-- `Dockerfile` - Builds a container image to serve the static site with nginx
-- `start-docker-site.ps1` - PowerShell script to build and run the Docker container locally
-- `LogReporter.ps1` - PowerShell script for log reporting
-- `terraform/` - Infrastructure as code for deploying the static site
-
-## How to Run Locally
-
-1. **Build the Docker image:**
-
-```powershell
-docker build -t singular-static-site .
-```
-
-2. **Run the container:**
-
-```powershell
-docker run -p 8080:80 singular-static-site
-```
-
-3. **Access the site:**
-   Open your browser to [http://localhost:8080](http://localhost:8080)
-
-Alternatively, use the provided PowerShell script:
-
-```powershell
-./start-docker-site.ps1
-```
-
-## Infrastructure as Code
-
-Terraform files in the `terraform/` directory allow you to provision cloud infrastructure for hosting the static site. See comments in the files for usage instructions.
-
-## Additional Scripts
-
-- `LogReporter.ps1` - For log management and reporting
-
-## Notes
-
-- The static site is served from the `report/` directory using nginx in the Docker container.
-- All configuration and setup is self-contained in this repo.
+- (Required) 1. Static log report files (html, json) & application (PowerShell).
+- (Required) 2. Terraform IaC for infrastructure provisioning.
+- (Required) 3. The application's Dockerfile.
+- (Optional) 4. GitHub Actions workflow for CI/CD - building the Dockerfile; deploying it to a target (GH Pages, Azure Static Web Site, etc.)
+- (Optional) 5. AI-generated favicon.
+- (Required) 6. README.md outlining:
+  - (Required) Proposed steps to use/deploy the IaC and Containerised application.
+  - (Optional) Documenting the AI favicon generation process, i.e., the tool used and the prompts given.
+  - (Optional) Describe what you learned from the process, the challenges you faced, and how you overcame them.
+  - (Optional) What would you have implemented differently, and what would you have added that the challenge didn’t specify?
 
 ---
 
+## 1. Required: Log Report Static Assets
+
+- Given the DevOps Challenge specifications, implement the Log Reporter application/process.
+- All `TASKS` in the spec must be completed to fulfill the requirements of this objective.
+
+## 2. Required: Terraform Infrastructure as Code (IaC)
+
+- All cloud resources must be managed using Terraform.
+- For Azure, you should use the following resources:
+  - `azurerm_resource_group`
+  - `azurerm_storage_account`
+  - `azurerm_storage_account_static_website`
+  - `azurerm_storage_container`
+  - `azurerm_storage_blob`
+- If you choose AWS or GCP, use equivalent resources and follow the same IaC philosophy.
+- The infrastructure must provision a static website hosting the generated reports HTML.
+- You can make use of the default Azure Blob Storage static website FQDN.
+
+## 3. Required: Containerisation of the Application
+
+- Containerise the static site using Docker.
+- Provide a `Dockerfile` that builds and serves the report via a web server (e.g., nginx, express.js, etc).
+- Ensure the container exposes the correct port and includes all necessary static assets.
+
+## 4. Optional: CI/CD Challenge Using GitHub Actions
+
+- Implement a `GitHub Actions` workflow to automate building and deploying the static site.
+- Example workflows may include:
+  - Building the Docker image on push
+  - Deploying the report to Azure Static Website using Azure CLI
+- Use secrets for credentials and storage account information.
+
+## 5. Optional: Generation of Site Favicon Using AI
+
+- Generate a `favicon.ico` for the site using any AI tool or service.
+- The favicon should be included in the static site and referenced appropriately.
+- Document the AI method or tool used for favicon generation.
+
+## 6. Required/Optional: Documentation
+
+- Provide a README that explains your methodology used and gives step-by-step instructions to build and deploy the Docker container.
+- Feel free to share additional context or artifacts that help demonstrate your fit for the role.
+  - Include any extra materials that clarify your decisions or showcases the work.
