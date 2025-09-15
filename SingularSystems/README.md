@@ -1,14 +1,11 @@
 # DevOps Code Challenge Objectives
 
-- [DevOps Code Challenge Objectives](#devops-code-challenge-objectives)
-  - [Challenge Context](#challenge-context)
-  - [Deliverables](#deliverables)
-  - [1. Required: Log Report Static Assets](#1-required-log-report-static-assets)
-  - [2. Required: Terraform Infrastructure as Code (IaC)](#2-required-terraform-infrastructure-as-code-iac)
-  - [3. Required: Containerisation of the Application](#3-required-containerisation-of-the-application)
-  - [4. Optional: CI/CD Challenge Using GitHub Actions](#4-optional-cicd-challenge-using-github-actions)
-  - [5. Optional: Generation of Site Favicon Using AI](#5-optional-generation-of-site-favicon-using-ai)
-  - [6. Required/Optional: Documentation](#6-requiredoptional-documentation)
+- [Challenge Context](#challenge-context)
+- [Deliverables](#deliverables)
+- [1. Log Report Static Assets](#1-log-report-static-assets)
+- [2. Containerisation of the Application](#2-containerisation-of-the-application)
+- [3. CI/CD Challenge Using GitHub Actions](#3-cicd-challenge-using-github-actions)
+- [4. Documentation](#4-documentation)
 
 ## Challenge Context
 
@@ -29,44 +26,29 @@
 
 ## Deliverables
 
-- (Required) 1. Static log report files (html, json) & application (PowerShell).
-- (Required) 2. Terraform IaC for infrastructure provisioning.
-- (Required) 3. The application's Dockerfile.
-- (Optional) 4. GitHub Actions workflow for CI/CD - building the Dockerfile; deploying it to a target (GH Pages, Azure Static Web Site, etc.)
-- (Optional) 5. AI-generated favicon.
-- (Required) 6. README.md outlining:
-  - (Required) Proposed steps to use/deploy the IaC and Containerised application.
-  - (Optional) Documenting the AI favicon generation process, i.e., the tool used and the prompts given.
-  - (Optional) Describe what you learned from the process, the challenges you faced, and how you overcame them.
-  - (Optional) What would you have implemented differently, and what would you have added that the challenge didn’t specify?
+- 1. Static log report files (html, json) & application (PowerShell).
+- 3. The application's Dockerfile.
+- 4. GitHub Actions workflow for CI/CD - building the Dockerfile; deploying it to a target (GH Pages, Azure Static Web Site, etc.)
+- 6. README.md outlining:
+  - Proposed steps to use/deploy the IaC and Containerised application.
+  - Documenting the AI favicon generation process, i.e., the tool used and the prompts given.
+  - Describe what you learned from the process, the challenges you faced, and how you overcame them.
+  - What would you have implemented differently, and what would you have added that the challenge didn’t specify?
 
 ---
 
-## 1. Required: Log Report Static Assets
+## 1. Log Report Static Assets
 
 - Given the DevOps Challenge specifications, implement the Log Reporter application/process.
 - All `TASKS` in the spec must be completed to fulfill the requirements of this objective.
 
-## 2. Required: Terraform Infrastructure as Code (IaC)
+## 2. Containerisation of the Application
 
-- All cloud resources must be managed using Terraform.
-- For Azure, you should use the following resources:
-  - `azurerm_resource_group`
-  - `azurerm_storage_account`
-  - `azurerm_storage_account_static_website`
-  - `azurerm_storage_container`
-  - `azurerm_storage_blob`
-- If you choose AWS or GCP, use equivalent resources and follow the same IaC philosophy.
-- The infrastructure must provision a static website hosting the generated reports HTML.
-- You can make use of the default Azure Blob Storage static website FQDN.
-
-## 3. Required: Containerisation of the Application
-
-- Containerise the static site using Docker.
 - Provide a `Dockerfile` that builds and serves the report via a web server (e.g., nginx, express.js, etc).
+  - Using middleware or best-practice configuration to serve static assets is encouraged. 
 - Ensure the container exposes the correct port and includes all necessary static assets.
 
-## 4. Optional: CI/CD Challenge Using GitHub Actions
+## 3. CI/CD Challenge Using GitHub Actions
 
 - Implement a `GitHub Actions` workflow to automate building and deploying the static site.
 - Example workflows may include:
@@ -74,14 +56,12 @@
   - Deploying the report to Azure Static Website using Azure CLI
 - Use secrets for credentials and storage account information.
 
-## 5. Optional: Generation of Site Favicon Using AI
-
-- Generate a `favicon.ico` for the site using any AI tool or service.
-- The favicon should be included in the static site and referenced appropriately.
-- Document the AI method or tool used for favicon generation.
-
-## 6. Required/Optional: Documentation
+## 4. Documentation
 
 - Provide a README that explains your methodology used and gives step-by-step instructions to build and deploy the Docker container.
 - Feel free to share additional context or artifacts that help demonstrate your fit for the role.
   - Include any extra materials that clarify your decisions or showcases the work.
+
+# FEEDBACK:
+- Drop unneeded requirements, keep boilerplate setup to a minimum, focus on core deliverables.
+- Ask the candidate to provide as much info on their usage of AI, preferably sharing public links to their chat history (or their full chat history in a medium like a Readme or Word Document).
