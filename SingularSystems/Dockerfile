@@ -2,8 +2,7 @@
 FROM nginx:alpine
 
 # Copy the static HTML site to the nginx html directory
-COPY report/report.html /usr/share/nginx/html/index.html
-COPY report/report.png /usr/share/nginx/html/favicon.ico
+COPY report/ /usr/share/nginx/html/
 
 # Expose port 80
 EXPOSE 80

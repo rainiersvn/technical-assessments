@@ -12,15 +12,15 @@
     "InfoLogCount": 32,
     "WarningLogCount": 9,
     "ErrorLogCount": 4,
-    "WarningLogCountChange": "50%",
-    "ErrorLogCountChange": "-60%"
+    "WarningLogCountChange": 50.0,
+    "ErrorLogCountChange": -60.0
   },
   {
     "Month": "2022-09",
     "InfoLogCount": 25,
     "WarningLogCount": 8,
     "ErrorLogCount": 5,
-    "WarningLogCountChange": "-11,11%",
-    "ErrorLogCountChange": "25%"
+    "WarningLogCountChange": -11.11,
+    "ErrorLogCountChange": 25.0
   }
 ]
